@@ -21,13 +21,16 @@ Route::get('/register', 'RegistrationController@create');
 
 Route::post('/register', 'RegistrationController@store');
 
-// Sessions (login, change password..) routes
+Route::get('/activate/{code}', 'RegistrationController@activateUser')->name('activate');
+
+// Sessions  routes
 Route::get('/login', 'SessionsController@login');
 
 Route::post('/login', 'SessionsController@store');
 
 Route::get('/logout', 'SessionsController@destroy');
 
+// Passwords routes
 Route::get('/change_password', 'PasswordsController@changePassword');
 
 Route::post('/change_password', 'PasswordsController@store');
@@ -36,9 +39,11 @@ Route::get('/forgot_password', 'PasswordsController@forgotPassword');
 
 Route::post('/send_reset_email', 'PasswordsController@sendResetEmail');
 
-Route::get('/activate/{code}', 'RegistrationController@activateUser')->name('activate');
-
 Route::get('/reset/{email}/{newPassword}', 'PasswordsController@resetPassword')->name('reset');
 
+// Images routes
+Route::get('/upload', 'ImagesController@index');
+
+Route::post('/upload', 'ImagesController@upload');
 
 

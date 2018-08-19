@@ -12,17 +12,24 @@
 
           <li class="nav-item active">
             <a class="nav-link" href="{{ url('/') }}/home">Home <span class="sr-only">(current)</span></a>
-          </li>
+          </li>          
 
-          @if (!Auth::check())       
-                <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/login">Login</a></li>
+          @if (!Auth::check())  
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}/login">Login</a>
+              </li>
           @endif  
 
-          @if (Auth::check())              
+          @if (Auth::check())   
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}/upload">Upload Image</a>
+              </li>    
+
               <li class="nav-item"><a class="nav-link ml-auto" href="{{ url('/') }}/change_password">Change Password</a></li>
-              <li class="nav-item"></li>
+
               <li class="nav-item"><a class="nav-link ml-auto" href="#">{{ auth()->user()->username }}</a></li>
-              <li class="nav-item"></li>  
+
+ 
               <li class="nav-item"><a class="nav-link ml-auto" href="{{ action('SessionsController@destroy') }}">Logout</a></li>
           @endif  
 
