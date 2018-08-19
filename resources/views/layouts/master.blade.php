@@ -18,7 +18,9 @@
 
   <body>
 
-  	@include ('layouts.navbar')
+    @include ('layouts.navbar')
+
+  	@include ('layouts.flash')
 
   	<div class="container">
 

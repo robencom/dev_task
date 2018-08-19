@@ -65,7 +65,7 @@ class PasswordsController extends Controller
 
         }
 
-        return redirect('/home');
+        return redirect('/home')->with('alert-success', 'Password has been changed successfully!');
 
     }     
 
@@ -80,12 +80,16 @@ class PasswordsController extends Controller
 
         \Mail::to($request->email)->send(new ForgotMail($request->email));
 
-        return back()->withErrors(['message' => 'An email has been sent to you with instructions to how to reset your password!']);
+        return back()->with('alert-info', 'An email has been sent to you with instructions to how to reset your password!');
 
     } 
 
     public function resetPassword($email, $cryptedPassword)
     {
+
+        $alert = '';
+
+        $message = '';
         
         $newPassword = \Crypt::decrypt($cryptedPassword);
 
@@ -95,7 +99,7 @@ class PasswordsController extends Controller
 
             if (!$user) {
 
-                return "There is no user with such email!";
+                return redirect('/forgot_password')->with('alert-danger', 'There is no user with such email!');
 
             }
 
@@ -103,7 +107,9 @@ class PasswordsController extends Controller
 
             $user->save();
 
-            //also show reset success
+            $alert = 'alert-success';
+
+            $message = 'Your password has been reset! Kindly use the new password from the email we sent you and change your password.';
 
             auth()->login($user);
 
@@ -111,11 +117,13 @@ class PasswordsController extends Controller
 
             logger()->error($exception);
 
-            return "Whoops! something went wrong.";
+            $alert = 'alert-danger';
+
+            $message = 'Whoops! something went wrong.';
 
         }
 
-        return redirect('/change_password');
+        return redirect('/change_password')->with($alert, $message);
     }
 
 }

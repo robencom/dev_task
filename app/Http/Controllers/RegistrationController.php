@@ -41,19 +41,19 @@ class RegistrationController extends Controller
                 'activation_code' => str_random(30).time()
         ];
 
-        //$user = User::create(request(['username', 'email', 'password']));
     	$user = User::create($req);
 
         \Mail::to($user)->send(new ActivationMail($user));
 
-    	//auth()->login($user);
-
-    	return redirect('/home');
+    	return redirect('/home')->with('alert-success', 'You have registered successfully. You need to activate your account through the email we just sent you.');
 
     } 
 
     public function activateUser($code)
     {
+
+        $alert = '';
+        $message = '';
         
         try {
 
@@ -71,7 +71,9 @@ class RegistrationController extends Controller
 
             $user->save();
 
-            //also show activation was success
+            $alert = 'alert-success';
+
+            $message = 'Your account has been activated!';
 
             auth()->login($user);
 
@@ -79,11 +81,13 @@ class RegistrationController extends Controller
 
             logger()->error($exception);
 
-            return "Whoops! something went wrong.";
+            $alert = 'alert-danger';
+
+            $message = 'Whoops! something went wrong.';
 
         }
 
-        return redirect('/home');
+        return redirect('/home')->with($alert, $message);
     }
 
 

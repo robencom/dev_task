@@ -11,6 +11,7 @@
 |
 */
 
+// HOME route
 Route::get('/home', function () {
     return view('home');
 });
@@ -45,5 +46,7 @@ Route::get('/reset/{email}/{newPassword}', 'PasswordsController@resetPassword')-
 Route::get('/upload', 'ImagesController@index');
 
 Route::post('/upload', 'ImagesController@upload');
+
+Route::get('/show', 'ImagesController@show');
 
 

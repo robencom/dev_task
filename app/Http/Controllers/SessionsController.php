@@ -39,13 +39,13 @@ class SessionsController extends Controller
         
         if ($user->verified === 1) {
 
-            return redirect('/home');
+            return redirect('/home')->with('alert-info', 'Welcome!');
 
         } else {
             
             auth()->logout();
 
-            return redirect('/login')->withErrors(['message' => 'You have not activated your account yet. Kindly check your inbox for the activation email and click on the link.']);
+            return redirect('/login')->with('alert-danger', 'You have not activated your account yet. Kindly check your inbox for the activation email and click on the link.');
 
         }
 
