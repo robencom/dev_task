@@ -4,7 +4,7 @@
 
 	<div class="col-md-8">
 
-		<h2> Login </h2>
+		<h2> Log In </h2>
 		<hr>
 
 		<form action="{{ action('SessionsController@store') }}" method="POST">

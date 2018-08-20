@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class ImagesController extends Controller
 {
+
     public function index()
     {
     	return view('images.upload');

@@ -46,3 +46,24 @@ footer p {
 }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.navbar-nav > li{
+  padding-left:25px;
+}
+
+.navbar .left {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+
+.right {
+	float: right;
+	padding-right: 50px; 
+}
+
