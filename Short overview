@@ -1,0 +1,9 @@
+1- You can find the 'dev_task' sql dump in the root 'dev_task' folder. It mainly contains the 'users' table with couple of added fields for the activation part of the task.
+
+2- When a user registers, an email is sent to them containing a link. When the link is copied to the browser, the activation process will be done (by updating the 'verified' field from 0 to 1 in the 'users' table).
+
+3- I have used 'log' as the mail driver for the task's convenience. This means that in order to see the activation email (and later the forgot email) you will need to go to 'app/storage/logs/laravel.log' and scroll all the way to the bottom to see the email (in HTML format).
+
+4- After Logging in, the user can change their password and upload an image. Note that I made seeeing the images avilable to all users as required, but uploading is restricted to authenticated users.
+
+5- In case the user clicks on "forgot password link" in the login page, they will have to enter their email address to which a reset link will be sent. Again, this email can be found in 'app/storage/logs/laravel.log'. After copy/pasting the link into the browser, the password will be reset with the new random password generated and mentioned in the email, then the user will be redirected to the 'change password' page. 

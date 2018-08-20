@@ -33,7 +33,8 @@
 }
 
 .jumbotron .container {
-  max-width: 40rem;
+  max-width: 80rem;
+  padding-bottom: 20px; 
 }
 
 footer {

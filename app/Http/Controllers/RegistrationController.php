@@ -61,7 +61,11 @@ class RegistrationController extends Controller
 
             if (!$user) {
 
-                return "This code is not valid!!";
+                $alert = 'alert-danger';
+                
+                $message = 'The code is not valid!';
+
+                return redirect('/home')->with($alert, $message);
 
             }
 

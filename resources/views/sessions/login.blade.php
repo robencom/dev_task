@@ -31,13 +31,21 @@
 
 			<div class="form-group">
 
-				<input type="submit" value="Submit" class="form-control" id="submit">
+				<input type="submit" value="Submit" class="form-control btn-primary" id="submit">
 
 				<br>
 				
 				<div align="center">
 					
 					<a href="{{ action('PasswordsController@forgotPassword') }}">Forgot your password?</a>
+
+				</div>	
+
+				<br>			
+
+				<div align="center">
+					
+					<a href="{{ action('RegistrationController@create') }}">Register here</a>
 
 				</div>
 				

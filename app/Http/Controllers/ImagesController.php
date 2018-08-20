@@ -3,13 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ImagesController extends Controller
 {
 
     public function index()
     {
-    	return view('images.upload');
+
+        if (Auth::check()) {
+
+            return view('images.upload');
+
+        } else {
+
+            return redirect('/home')->with('alert-warning', 'You need to log in to upload an image!');
+
+        }
     }    
 
     public function upload(Request $request)
